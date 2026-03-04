@@ -236,13 +236,12 @@ const MainMenu = () => {
         <Info />
         <div
           className={clsx(
-            'rounded-2xl bg-(--card-color)',
+            'overflow-hidden rounded-2xl bg-(--card-color)',
             'duration-250',
             'transition-all ease-in-out',
             'flex flex-col md:flex-row',
             'w-full',
             'max-md:border-b-4 max-md:border-(--border-color)',
-            // 'backdrop-blur-xl',
           )}
         >
           {links.map((link, i) => (
@@ -254,25 +253,26 @@ const MainMenu = () => {
               >
                 <button
                   className={clsx(
-                    'flex h-full w-full text-2xl',
-                    'items-center justify-center gap-1.5 border-(--border-color)',
+                    'flex h-20 w-full text-2xl md:h-28',
+                    'items-center justify-start border-(--border-color)',
                     'md:border-b-4',
-                    'py-8',
-                    'group',
-                    i === 0 && 'rounded-tl-2xl rounded-bl-2xl',
-                    i === links.length - 1 && 'rounded-tr-2xl rounded-br-2xl',
+                    'group transition-colors',
                     'hover:cursor-pointer md:hover:border-(--main-color)/80',
-                    'hover:bg-(--border-color)',
+                    'hover:bg-(--border-color)/10',
                   )}
                   onClick={() => playClick()}
                 >
-                  <span
-                    lang='ja'
-                    className='font-normal text-(--secondary-color)'
-                  >
-                    {link.name_ja}
-                  </span>
-                  <span lang='en' className=''>
+                  <div className='flex aspect-square h-full shrink-0 items-center justify-center bg-(--border-color) transition-colors group-hover:bg-(--border-color)/80'>
+                    <div className='flex size-12 items-center justify-center rounded-2xl bg-(--background-color) shadow-sm md:size-16'>
+                      <span
+                        lang='ja'
+                        className='text-2xl font-normal text-(--secondary-color) md:text-3xl'
+                      >
+                        {link.name_ja}
+                      </span>
+                    </div>
+                  </div>
+                  <span lang='en' className='pl-6 text-(--main-color) md:pl-10'>
                     {link.name_en}
                   </span>
                 </button>
